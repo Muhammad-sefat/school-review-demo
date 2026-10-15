@@ -1,5 +1,5 @@
 /**
- * Sends early access notification email via serverless Resend integration.
+ * Sends early access notification email via Vercel serverless Resend integration.
  *
  * @param {Object} params
  * @param {string} params.email - The subscriber's email address
@@ -14,7 +14,7 @@ export async function sendEarlyAccessEmail({ email, website = "" }) {
     throw new Error("Please enter a valid email address.");
   }
 
-  const response = await fetch("/.netlify/functions/send-email", {
+  const response = await fetch("/api/send-email", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
